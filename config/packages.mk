@@ -17,14 +17,15 @@
 PRODUCT_PACKAGES += \
     BluetoothExt \
     SimpleCalendar \
-    DuckDuckGo \
-    ExactCalculator \
+    Iceraven \
     LatinIME \
     Launcher3QuickStep \
+    MotoCalculator \
     ParallelSpace \
     messaging \
     Seedvault \
     SimpleGallery \
+    SimpleMusicPlayer \
     Stk \
     stats \
     ThemePicker
