@@ -14,7 +14,7 @@
 # limitations under the License.
 
 ARROW_MOD_VERSION = v13.1
-ARROW_BUILD_TYPE := UNOFFICIAL
+ARROW_BUILD_TYPE := EXTENDED
 ARROW_BUILD_ZIP_TYPE := VANILLA
 
 ifeq ($(ARROW_BETA),true)
@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 
     endif
     ifneq ($(IS_OFFICIAL), true)
-       ARROW_BUILD_TYPE := UNOFFICIAL
+       ARROW_BUILD_TYPE := EXTENDED
        $(error Device is not official "$(CURRENT_DEVICE)")
     endif
 endif
@@ -51,7 +51,7 @@ ifeq ($(ARROW_COMMUNITY), true)
       ARROW_BUILD_TYPE := COMMUNITY
     endif
     ifneq ($(IS_COMMUNITY), true)
-       ARROW_BUILD_TYPE := UNOFFICIAL
+       ARROW_BUILD_TYPE := EXTENDED
        $(error This isn't a community device "$(CURRENT_DEVICE)")
     endif
 endif
