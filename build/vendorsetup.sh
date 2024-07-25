@@ -14,70 +14,6 @@ function brunch() {
     return $?
 }
 
-function repopick() {
-    T=$(gettop)
-    $T/vendor/arrow/build/tools/repopick.py $@
-}
-
-function gerritpush() {
-    local GERRIT_URL=review.arrowos.net
-    local MANIFEST_PATH="$ANDROID_BUILD_TOP/manifest/arrow.xml"
-    local PREFIX="ArrowOS/"
-    local branch=arrow-13.1
-    local ref=for
-    local push_options=""
-
-    while [ "$#" -gt 0 ]; do
-      case "$1" in
-        -t)
-            push_options+=" -o \"topic=$2\""; shift
-            ;;
-        -c)
-            push_options+=" -o \"l=Code-Review$2\""; shift
-            ;;
-        -v)
-            push_options+=" -o \"l=Verified$2\""; shift
-            ;;
-        -p)
-            push_options+=" -o private"
-            ;;
-        -w)
-            push_options+=" -o wip"
-            ;;
-        -d)
-            ref=heads
-            push_options+=" -o skip-validation"
-            ;;
-        -f)
-            push_options+=" -f"
-            ;;
-        -b)
-            branch="$2"; shift
-            ;;
-      esac
-      shift
-    done
-    if ! git rev-parse --is-inside-work-tree &> /dev/null; then
-        echo "fatal: not a git repository"
-        return 1
-    fi
-    local repo=$(git rev-parse --show-toplevel | sed "s|$ANDROID_BUILD_TOP/||g")
-    local name=$(grep "path=\"$repo\"" $MANIFEST_PATH | sed -e 's/.*name="//' -e 's/".*//')
-    if [[ -z $name ]]; then
-        name=$(grep "name=\"$repo\"" $MANIFEST_PATH | sed -e 's/.*name="//' -e 's/".*//')
-    fi
-    if [[ -z $name ]]; then
-        echo "fatal: repo is not in arrow manifest"
-        return 1
-    fi
-    if [[ -z $ARROW_GERRIT_USER ]]; then
-      printf 'Enter gerrit username: '
-      read -r ARROW_GERRIT_USER
-    fi
-    export ARROW_GERRIT_USER
-    $(eval git push$push_options "ssh://$ARROW_GERRIT_USER@$GERRIT_URL:29418/$PREFIX$name" "HEAD:refs/$ref/$branch")
-}
-
 if [ -z ${CCACHE_EXEC} ]; then
     ccache_path=$(which ccache)
     if [ ! -z "$ccache_path" ]; then
@@ -92,5 +28,3 @@ if [ -z ${CCACHE_EXEC} ]; then
         echo -e "\e[31m\e[1mccache not found/installed!\e[0m"
     fi
 fi
-
-export ANDROID_BUILD_TOP=$(gettop)
