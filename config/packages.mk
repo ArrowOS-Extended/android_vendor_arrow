@@ -16,6 +16,7 @@
 # Required packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
+    GameSpace \
     SimpleCalendar \
     Iceraven \
     LatinIME \
