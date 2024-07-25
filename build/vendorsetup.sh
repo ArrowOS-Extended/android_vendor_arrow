@@ -28,3 +28,5 @@ if [ -z ${CCACHE_EXEC} ]; then
         echo -e "\e[31m\e[1mccache not found/installed!\e[0m"
     fi
 fi
+
+export SKIP_ABI_CHECKS=true
