@@ -7,9 +7,9 @@
 ARROW_TARGET_PACKAGE := $(PRODUCT_OUT)/$(ARROW_VERSION).zip
 
 .PHONY: bacon
-bacon: otapackage
+bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(ARROW_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(ARROW_TARGET_PACKAGE) > $(ARROW_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5SUM) $(ARROW_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(ARROW_TARGET_PACKAGE).md5sum
 	echo -e "========================================="
 	echo -e ""
 	echo -e "                 \033[1;34m''\033[0m                  "
@@ -29,7 +29,7 @@ bacon: otapackage
 	echo -e "        \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\` \`\` \033[1;34m.   \033[0m"
 	echo -e "           \`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`          "
 	echo -e ""
-	echo -e "                ArrowOS"
+	echo -e "                ArrowOS-Extended"
 	echo -e ""
 	echo -e "========================================="
 	echo -e ""
