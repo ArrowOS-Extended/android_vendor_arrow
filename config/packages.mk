@@ -15,9 +15,11 @@
 
 # Required packages
 PRODUCT_PACKAGES += \
+    Aperture \
     BluetoothExt \
+    CalendarFossify \
     GameSpace \
-    SimpleCalendar \
+    GalleryFossify \
     Iceraven \
     LatinIME \
     Launcher3QuickStep \
@@ -25,7 +27,6 @@ PRODUCT_PACKAGES += \
     ParallelSpace \
     messaging \
     Seedvault \
-    SimpleGallery \
     SimpleMusicPlayer \
     Stk \
     stats \
