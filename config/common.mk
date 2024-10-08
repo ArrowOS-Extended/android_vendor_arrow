@@ -133,3 +133,6 @@ include vendor/arrow/config/sounds.mk
 
 # Private
 -include vendor/arrow-priv/config.mk
+
+# Translations
+include vendor/crowdin/config.mk
