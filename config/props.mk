@@ -68,6 +68,10 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_b=1
 
+# OPA configuration
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.opa.eligible_device=true
+
 # Enable support of one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true

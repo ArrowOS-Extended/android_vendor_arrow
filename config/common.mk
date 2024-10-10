@@ -59,6 +59,12 @@ PRODUCT_COPY_FILES += \
     vendor/arrow/prebuilt/common/etc/init/init.arrow-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.arrow-updater.rc \
     vendor/arrow/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
+# Google
+ifeq ($(ARROW_BUILD_ZIP_TYPE),VANILLA)
+PRODUCT_COPY_FILES += \
+    vendor/arrow/prebuilt/common/etc/sysconfig/nexus.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/nexus.xml
+endif
+
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/arrow/build/tools/backuptool.sh:install/bin/backuptool.sh \
